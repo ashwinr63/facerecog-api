@@ -9,6 +9,9 @@ const cors = require('cors');
 // import knexjs for sqlprocedures
 const knex = require('knex');
 
+// import clarifai api for the server call
+//const clarifai = require('clarifai')
+
 const register = require('./controllers/register')
 const signIn = require('./controllers/signIn')
 const profile = require('./controllers/profile')
@@ -31,18 +34,15 @@ app.use(bodyParser.json());
 //use cors for middleware 
 app.use(cors())
 // get method to check if the app is running via nodemon
-app.get('/', (req, res) => {
-	// getting the database entries via the POSTMAN tool
-	res.send(database.users)
-})
+app.get('/', (req, res) => { res.send(database.users) })
 // checking with signin page using signin profile
-app.post('/signIn', (req, res) => {signIn.handleSignIn(req,res,db,bcrypt)})
+app.post('/signIn', signIn.handleSignIn(db, bcrypt))
 // REgister - POST
-app.post('/register',(req, res) => { register.handleRegister(req, res, db, bcrypt)})
+app.post('/register',(req, res) => {register.handleRegister(req, res, db, bcrypt)})
 //Profile with get request and ID
-app.get('/profile/:id', (req, res) => {profile.handleProfileGet(req, res, db)})
+app.get('/profile/:id', (req, res) =>  {profile.handleProfileGet(req, res, db)})
 // image entries with PUT method not POST
-app.put('/image',(req, res) => {image.handleImage(res, req, db)})
+app.put('/image', (req, res) => {image.handleImage(req, res, db)})
 
 
 // listening to the app at port 3000;

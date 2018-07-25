@@ -2,6 +2,7 @@
 const handleRegister = (req, res, db, bcrypt) => {
 	// new datbase with users
 	const { email, name, password } = req.body
+	if()
 	const hash = bcrypt.hashSync(password)
 
 	db.transaction(trx => {
