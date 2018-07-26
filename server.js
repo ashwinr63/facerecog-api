@@ -44,6 +44,8 @@ app.get('/profile/:id', (req, res) =>  {profile.handleProfileGet(req, res, db)})
 // image entries with PUT method not POST
 app.put('/image', (req, res) => {image.handleImage(req, res, db)})
 
+app.post('/imageurl', (req, res) => { image.handleApiCall(req, res)})
+
 
 // listening to the app at port 3000;
 app.listen(3001, () => {

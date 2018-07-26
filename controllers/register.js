@@ -2,7 +2,9 @@
 const handleRegister = (req, res, db, bcrypt) => {
 	// new datbase with users
 	const { email, name, password } = req.body
-	if()
+	if(!email || !name || !password) {
+	return	res.status(400).json('Incorrect form Submission')
+	}
 	const hash = bcrypt.hashSync(password)
 
 	db.transaction(trx => {
