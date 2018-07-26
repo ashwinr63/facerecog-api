@@ -35,7 +35,7 @@ app.use(bodyParser.json());
 //use cors for middleware 
 app.use(cors())
 // get method to check if the app is running via nodemon
-app.get('/', (req, res) => { res.send(database.users) })
+app.get('/', (req, res) => { res.send('it is working') })
 // checking with signin page using signin profile
 app.post('/signIn', signIn.handleSignIn(db, bcrypt))
 // REgister - POST
