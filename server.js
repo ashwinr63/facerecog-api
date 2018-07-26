@@ -16,6 +16,7 @@ const register = require('./controllers/register')
 const signIn = require('./controllers/signIn')
 const profile = require('./controllers/profile')
 const image = require('./controllers/image')
+//const imageurl = require('./controllers/image')
 
 const db = knex({
 	client: 'pg',
@@ -43,8 +44,8 @@ app.post('/register',(req, res) => {register.handleRegister(req, res, db, bcrypt
 app.get('/profile/:id', (req, res) =>  {profile.handleProfileGet(req, res, db)})
 // image entries with PUT method not POST
 app.put('/image', (req, res) => {image.handleImage(req, res, db)})
-
-app.post('/imageurl', (req, res) => { image.handleApiCall(req, res)})
+// getting imageurl for clarifai api for using server side call up
+app.post('/imageurl', (req, res) => { image.handleApiCall(req, res) })
 
 
 // listening to the app at port 3000;
