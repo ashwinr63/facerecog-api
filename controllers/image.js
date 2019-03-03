@@ -1,11 +1,11 @@
 import Clarifai from 'clarifai'
 
-const app = new Clarifai.App({
+const clarifai = new Clarifai.App({
 	apiKey: 'e7d4b611ae8e466592389d540f23a118'
 });
 
 const handleApiCall = (req, res) => {
-	app.models
+	clarifai.models
 		.predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
 		.then(data => {
 			res.json(data);
