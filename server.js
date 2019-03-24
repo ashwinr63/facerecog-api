@@ -35,7 +35,7 @@ app.use(bodyParser.json());
 
 
 // get method to check if the app is running via nodemon
-app.get('/', (_req, res) => { res.send(db.users) })
+app.get('/', (_req, res) => { res.send('db.users') })
 // checking with signin page using signin profile
 app.post('/signIn', signIn.handleSignIn(db, bcrypt))
 // REgister - POST
