@@ -1,4 +1,3 @@
-
 const handleRegister = (req, res, db, bcrypt) => {
 	// new datbase with users
 	const { email, name, password } = req.body
@@ -10,7 +9,7 @@ const handleRegister = (req, res, db, bcrypt) => {
 	db.transaction(trx => {
 		trx.insert({
 			hash: hash,
-			email: email,
+			email: email
 		})
 			.into('login')
 			.returning('email')
@@ -36,5 +35,5 @@ const handleRegister = (req, res, db, bcrypt) => {
 
 
 module.exports = {
-	handleRegister
-}
+  handleRegister
+};
