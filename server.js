@@ -18,7 +18,7 @@ const image = require('./controllers/image')
 const db = knex({
 	client: 'pg',
 	connection: {
-		host: '127.0.0.1',
+		host: 'postgresql-rectangular-56473',
 		user: 'postgres',
 		password: '',
 		database: 'smartbrain'
@@ -35,7 +35,7 @@ app.use(bodyParser.json());
 
 
 // get method to check if the app is running via nodemon
-app.get('/', (_req, res) => { res.send('db.users') })
+app.get('/', (_req, res) => { res.send(db.users) })
 // checking with signin page using signin profile
 app.post('/signIn', signIn.handleSignIn(db, bcrypt))
 // REgister - POST
